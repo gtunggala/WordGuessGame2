@@ -39,57 +39,58 @@ var artistGuessGame = {
     // object of all the artists/words that can be guessed along with the picture
 
     artistToPick: {
+
         ['andy warhol']: {
             artist: "andy warhol",
-            picture: "assets/images/andy-warhol.jpg"
+            picture: "../images/andy-warhol.jpg"
         },
         ['claude monet']: {
             artist: "claude monet",
-            picture: "claude-monet.jpg"
+            picture: "../images/claude-monet.jpg"
         },
         ['edgar degas']: {
             artist: "edgar degas",
-            picture: "edgar-degas.jpg"
+            picture: "../images/edgar-degas.jpg"
         },
         ['edouard manet']: {
             artist: "edouard manet",
-            picture: "edouard-manet.jpg"
+            picture: "../images/edouard-manet.jpg"
         },
         ['edward hopper']: {
             artist: "edward hopper",
-            picture: "edward-hopper.jpg"
+            picture: "../images/edward-hopper.jpg"
         },
         ['frida kahlo']: {
             artist: "frida kahlo",
-            picture: "frida-kahlo.jpg"
+            picture: "../images/frida-kahlo.jpg"
         },
         ['henri matisse']: {
             artist: "henri matisse",
-            picture: "henri-matisse.jpg"
+            picture: "../images/henri-matisse.jpg"
         },
-        ['mary cassatt']: {
+        ['mary cassatt']:  {
             artist: "mary cassatt",
-            picture: "mary-cassatt.jpg"
+            picture: "../images/mary-cassatt.jpg"
         },
         ['pablo picasso']: {
             artist: "pablo picasso",
-            picture: "pablo-picasso.jpg"
+            picture: "../images/pablo-picasso.jpg"
         },
         ['salvador dali']: {
             artist: "salvador dali",
-            picture: "salvador-dali.jpg"
+            picture: "../images/salvador-dali.jpg"
         },
         ['yayoi kusama']: {
             artist: "yayoi kusama",
-            picture: "yayoi-kusama.jpg"
+            picture: "../images/yayoi-kusama.jpg"
         }
+    },
+       
 
         // artistToPick.replace(/ /g,"-")
 
         // artistToPick.trim()
-        // console.log(artistToPick);
 
-    },
 
     // variables that set the initial state of game
     artistInPlay: null,
@@ -108,7 +109,7 @@ var artistGuessGame = {
         this.artistInPlay = objKeys[Math.floor(Math.random() * objKeys.length)];
 
         // split the chosen artist up into its individual letters.
-        this.lettersOfTheArtist = this.artistInPlay.split("");
+        this.lettersOfTheArtist = this.artistInPlay;
         console.log(artistGuessGame);
         
         // Builds the representation of the word we are trying to guess and displays it on the page.
@@ -116,6 +117,7 @@ var artistGuessGame = {
         this.rebuildArtistView();
         // This function sets the number of guesses the user gets, and renders it to the HTML.
         this.processUpdateTotalGuesses();
+        console.log(this.artistToPick[this.artistInPlay].picture);
     },
 
      // This function is run whenever the user guesses a letter..
@@ -259,8 +261,7 @@ var artistGuessGame = {
     //   Update the image of the band on the page.
       document.querySelector("#band-div").innerHTML =
         "<img class='band-image' src='../images/" +
-        this.artistToPick[this.artistInPlay].picture + "' alt='" +
-        this.artistToPick[this.artistInPlay].song + "'>";
+        this.artistToPick[this.artistInPlay].picture + "' />";
 
       // return true, which will trigger the restart of our game in the updatePage function.
       return true;
@@ -284,4 +285,4 @@ document.onkeyup = function(event) {
   }
 
 
-}
+};
