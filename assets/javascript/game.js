@@ -36,7 +36,7 @@
 // entire object that contains all of the logic and variables
 var artistGuessGame = {
 
-    // object of all the artists/words that can be guessed along with the painting
+    // object of all the artists/words that can be guessed along with the picture
 
     artistToPick: {
         ['andy warhol']: {
@@ -83,6 +83,12 @@ var artistGuessGame = {
             artist: "yayoi kusama",
             picture: "yayoi-kusama.jpg"
         }
+
+        // artistToPick.replace(/ /g,"-")
+
+        // artistToPick.trim()
+        // console.log(artistToPick);
+
     },
 
     // variables that set the initial state of game
@@ -101,7 +107,7 @@ var artistGuessGame = {
         var objKeys = Object.keys(this.artistToPick);
         this.artistInPlay = objKeys[Math.floor(Math.random() * objKeys.length)];
 
-        // Split the chosen artist up into its individual letters.
+        // split the chosen artist up into its individual letters.
         this.lettersOfTheArtist = this.artistInPlay.split("");
         console.log(artistGuessGame);
         
@@ -113,20 +119,20 @@ var artistGuessGame = {
     },
 
      // This function is run whenever the user guesses a letter..
-  updatePage: function(letter) {
+    updatePage: function(letter) {
     // If the user has no guesses left, restart the game.
     if (this.guessesLeft === 0) {
       this.restartGame();
     }
-    // Otherwise...
+
     else {
-      // Check for and handle incorrect guesses.
+      // Check for and handle incorrect guesses
       this.updateGuesses(letter);
 
-      // Check for and handle correct guesses.
+      // Check for and handle correct guesses
       this.updateMatchedLetters(letter);
 
-      // Rebuild the view of the word. Guessed letters are revealed, non-guessed letters have a "_".
+      // Rebuild the view of the artist name. Guessed letters are revealed, non-guessed letters have a "_".
       this.rebuildArtistView();
 
       // If the user wins, restart the game.
@@ -157,7 +163,7 @@ var artistGuessGame = {
    // This function sets the initial guesses the user gets.
    processUpdateTotalGuesses: function() {
     // The user will get more guesses the longer the artist name is.
-    this.totalGuesses = this.lettersOfTheArtist.length + 5;
+    this.totalGuesses = this.lettersOfTheArtist.length + 3;
     this.guessesLeft = this.totalGuesses;
 
     // Render the guesses left to the page.
@@ -177,7 +183,6 @@ var artistGuessGame = {
     },
 
     // This function builds the display of the word that is currently being guessed.
-    // For example, if we are trying to guess "blondie", it might display "bl_ndi_".
     rebuildArtistView: function() {
     // We start with an empty string.
     var artistView = "";
